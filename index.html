@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ようへいのポートフォリオ</title>
+
+    <!-- ファビコンの設定 -->
+    <link rel="icon" href="Images/Rocket.png" type="image/png">
+
+    <!-- Google Fonts (見栄えを良くするため) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=VT323&display=swap"
+        rel="stylesheet">
+
+    <!-- 外部CSSファイルの読み込み -->
+    <link rel="stylesheet" href="style.css?v=1.1">
+
+    <!-- 追加のCSS -->
+    <style>
+        .contact-info a:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- p5.jsのキャンバスを格納する専用コンテナ -->
+    <div id="canvas-container"></div>
+
+    <!-- ===== LOADING ===== -->
+    <div id="loading-screen">
+        <div id="loading-text"></div>
+    </div>
+
+    <!-- ===== 1. ナビゲーションバー (常に固定) ===== -->
+    <header class="navbar hidden">
+        <nav>
+            <ul>
+                <li><a href="#top">TOP</a></li>
+                <li><a href="#profile">PROFILE</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#experience">EXPERIENCE</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===== メインコンテンツ ===== -->
+    <main>
+
+        <!-- ===== 2. TOP (ヒーローセクション) ===== -->
+        <section id="top" class="hero-section">
+            <div class="hero-video-background">
+                <iframe
+                    src="https://www.youtube.com/embed/SF-bYdyrLYs?autoplay=1&mute=1&loop=1&playlist=SF-bYdyrLYs&controls=0&rel=0"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div class="hero-content">
+                <h1 class="scroll-animate from-up">時間を忘れてプレイできるゲームを。</h1>
+                <p class="scroll-animate from-up">矢追陽平（ようきん）</p>
+            </div>
+        </section>
+
+        <!-- ===== 3. プロフィール ===== -->
+        <section id="profile" class="section-container">
+            <div id="profile-background" class="section-background-canvas"></div>
+            <h2 class="scroll-animate from-down">PROFILE</h2>
+            <div class="profile-content">
+                <div class="profile-sidebar">
+                    <div class="profile-image-container">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="Images/myFace_LiT.JPG" alt="顔写真" class="profile-image pc-image">
+                                <!-- PC用画像 -->
+                                <img src="Images/myFace_LiT.JPG" alt="顔写真（スマホ用）" class="profile-image mobile-image">
+                            </div>
+                            <div class="flip-card-back">
+                                <img src="Images/YoheiDot.gif" alt="裏面のGIF" class="profile-image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-field" id="name-field">
+                        <h3>Name</h3>
+                        <p>矢追陽平（ヨウキン）</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://x.com/youkinCom" target="_blank" class="social-link-item">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+                            <span>Twitter</span>
+                        </a>
+                        <a href="https://github.com/Youkin06" target="_blank" class="social-link-item">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <a href="mailto:yopi.games.tokyo@gmail.com">yopi.games.tokyo@gmail.com</a>
+                        <a href="mailto:yohei0607@keio.jp">yohei0607@keio.jp</a>
+                    </div>
+                </div>
+                <div class="profile-text">
+                    <div class="profile-field">
+                        <h3>About Me</h3>
+                        <p>「面白い」ゲームを開発する大学生<br>コミュニケーションが生まれるゲームを作りたい。 <br>慶應義塾大学環境情報学部環境情報学科1年</p>
+                    </div>
+
+                    <!-- 受賞歴アコーディオン -->
+                    <div class="accordion">
+                        <div class="accordion-toggle">
+                            <h3>受賞歴</h3>
+                            <span class="icon-arrow"></span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>2024年ゲームクリエイター甲子園U18 セミファイナル進出 & 出展</p>
+                            <p>2025年ゲームクリエイター甲子園 ノミネート作品 & 出展</p>
+                            <!-- 必要に応じて追加 -->
+
+                        </div>
+                    </div>
+                    <!-- インターン・バイト経験アコーディオン -->
+                    <div class="accordion">
+                        <div class="accordion-toggle">
+                            <h3>インターン・バイト経験</h3>
+                            <span class="icon-arrow"></span>
+                        </div>
+                        <div class="accordion-content">
+                            <!-- 枠1 -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <span class="company-name">ライフイズテック株式会社</span>
+                                    <span class="period">2025年7月~</span>
+                                </div>
+                                <p class="experience-details">
+                                    中高生向けUnity教育のメンターを担当。技術指導を通して、初心者に教えられるレベルでの技術力を徹底的に習得。専門用語を避けて説明する言語化能力と、即座に問題を解決する基礎力を確立した。
+                                </p>
+                            </div>
+                            <!-- 枠2 -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <span class="company-name">株式会社シフト</span>
+                                    <span class="period">2025年10月~</span>
+                                </div>
+                                <p class="experience-details">
+                                    商業ゲーム開発にUnityエンジニアとして参画。実装要件の調査から開発、デバッグまでを担当し、自己解決のためのリサーチ力と迅速なトライアンドエラーによる開発スキルを実践で体得した。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion">
+                        <div class="accordion-toggle">
+                            <h3>研究</h3>
+                            <span class="icon-arrow"></span>
+                        </div>
+                        <div class="accordion-content">
+                            <!-- 枠1 -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <span class="company-name">【服部研】Unityで敵AIの制作</span>
+                                    <span class="period">2025年9月~</span>
+                                </div>
+                                <p class="experience-details">慶應SFCのウェブアプリケーションの研究会「服部研」に2025年9月から所属。Unity
+                                    ML-Agentsを用いて、PONGゲームのCPUや鬼ごっこの鬼を機械学習で作成した。強化学習と模倣学習を組み合わせることで、プレイヤーに適切な難易度を提供するAIの開発に成功した。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Life is Tech!での活動アコーディオン -->
+                    <div class="accordion">
+                        <div class="accordion-toggle">
+                            <h3 style="font-family: 'DotGothic16', sans-serif;">Life is Tech!での活動</h3>
+                            <span class="icon-arrow"></span>
+                        </div>
+                        <div class="accordion-content">
+                            <!-- 枠1: 年表 -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <span class="company-name">Life is Tech!での主な活動</span>
+                                    <span class="period">2025年7月~</span>
+                                </div>
+                                <p class="experience-details">
+                                    2025年8月　早稲田キャンプ<br>
+                                    2025年8月　横浜国立キャンプ<br>
+                                    2025年8月　SFCキャンプ<br>
+                                    2025年9月　DXハイスクール@静岡<br>
+                                    2025年10月　土曜横浜スクール開始<br>
+                                    2025年10月　日曜横浜スクール開始
+                                </p>
+                            </div>
+                            <!-- 枠2: キャンプでの活動 -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <span class="company-name">キャンプでの活動</span>
+                                    <span class="period">2025年8月</span>
+                                </div>
+                                <p class="experience-details">
+                                    SFCキャンプでは、ゲームクリエイター甲子園総合大賞のメンバー（技術力S）にShader Graphの使い方を教えた。
+                                </p>
+                            </div>
+                            <!-- 枠3: スクールでの活動 -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <span class="company-name">スクールでの活動</span>
+                                    <span class="period">2025年10月~</span>
+                                </div>
+                                <p class="experience-details">
+                                    土曜横浜スクールでは3人、日曜横浜スクールでは1人のメンバーをスクールカップに導いた。
+                                </p>
+                            </div>
+                            <!-- 枠4: その他の活動 -->
+                            <div class="experience-item">
+                                <div class="experience-header">
+                                    <span class="company-name">その他の活動</span>
+                                    <span class="period">2025年11月~</span>
+                                </div>
+                                <p class="experience-details">
+                                    17期LeadersUnityコースのメンター10人とチーム開発を開始。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 4. 作品 ===== -->
+        <section id="projects" class="section-container">
+            <div id="projects-background" class="section-background-canvas"></div>
+            <h2 class="scroll-animate from-down">PROJECTS</h2>
+
+            <!-- トップ作品 -->
+            <div class="project-top scroll-animate from-down">
+                <div class="project-item" data-modal-target="modal-project-1">
+                    <div class="video-container">
+                        <iframe
+                            src="https://www.youtube.com/embed/g1A0z3bnu78?autoplay=1&mute=1&loop=1&playlist=g1A0z3bnu78&controls=0&rel=0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-description">
+                        <h3>ぼくのにっき</h3>
+                        <p>ノートに書き込んで進む2Dアクションホラーゲーム。<br><span class="click-for-details">▶︎ クリックして詳細を見る</span></p>
+                        <ul class="tags">
+                            <li class="tag unity">Unity</li>
+                            <li class="tag illust">イラスト</li>
+                            <li class="tag two-d">2D</li>
+                            <li class="tag gc-koshien">GC甲子園ノミネート</li>
+                            <li class="tag leaders">Leaders作品</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品グリッド (3列) -->
+            <div class="project-grid">
+                <!-- 作品アイテム 2 -->
+                <div class="project-item" data-modal-target="modal-project-2">
+                    <div class="video-container">
+                        <iframe
+                            src="https://www.youtube.com/embed/k5BV3rlGCUc?autoplay=1&mute=1&loop=1&playlist=k5BV3rlGCUc&controls=0&rel=0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-description">
+                        <h3>DEPTH DIARY</h3>
+                        <p>スマホで簡単操作！2Dドットアドベンチャーゲーム<br><span class="click-for-details">▶︎ クリックして詳細を見る</span></p>
+                        <ul class="tags">
+                            <li class="tag unity">Unity</li>
+                            <li class="tag dot-e">ドット絵</li>
+                            <li class="tag two-d">2D</li>
+                            <li class="tag gc-koshien">GC甲子園U18セミファイナル</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 作品アイテム 3 -->
+                <div class="project-item" data-modal-target="modal-project-3">
+                    <div class="video-container">
+                        <iframe
+                            src="https://www.youtube.com/embed/b3qK5eTwYUs?autoplay=1&mute=1&loop=1&playlist=b3qK5eTwYUs&controls=0&rel=0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-description">
+                        <h3>スライムスライス</h3>
+                        <p>スライムを切り裂け！3Dカジュアルゲーム<br><span class="click-for-details">▶︎ クリックして詳細を見る</span></p>
+                        <ul class="tags">
+                            <li class="tag unity">Unity</li>
+                            <li class="tag modeling">モデリング</li>
+                            <li class="tag three-d">3D</li>
+                            <li class="tag blender">Blender</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 作品アイテム 4 -->
+                <div class="project-item" data-modal-target="modal-project-4">
+                    <div class="video-container">
+                        <iframe
+                            src="https://www.youtube.com/embed/4Kb0cGfee5Q?autoplay=1&mute=1&loop=1&playlist=4Kb0cGfee5Q&controls=0&rel=0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="project-description">
+                        <h3>CIRCUSAL</h3>
+                        <p>Googleストアにリリース！2Dカジュアルゲーム<br><span class="click-for-details">▶︎ クリックして詳細を見る</span></p>
+                        <ul class="tags">
+                            <li class="tag unity">Unity</li>
+                            <li class="tag illust">イラスト</li>
+                            <li class="tag two-d">2D</li>
+                            <li class="tag google-play">Google Playリリース</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 5. 経験 ===== -->
+        <section id="experience" class="section-container">
+            <div id="experience-background" class="section-background-canvas"></div>
+            <h2 class="scroll-animate from-down">EXPERIENCE</h2>
+            <div class="experience-list scroll-animate from-down">
+                <!-- 経験 1 (アコーディオン) -->
+                <div class="accordion">
+                    <div class="accordion-toggle">
+                        <h3>ゲーム開発への情熱と挑戦 (小・中・高時代)</h3>
+                        <span class="icon-arrow"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>様々なコンシューマーゲームやPCオンラインゲームに熱中した経験から、中学3年生でプログラミングとUnityに出会い、ゲーム開発の道に進んだ。<br>
+
+                            [挑戦] 高校1年: Google Playに初リリース まずは「完成させる」ことを目標に、初の自作ゲームをGoogle Playにリリースした。<br>
+
+                            [挫折と学び] 高校2年: 長期開発の失敗
+                            次に長期開発に挑戦するも、計画不足により挫折。この経験から、アイデアの言語化、タスク管理、そして実現可能なスケジュールを立てる重要性を痛感した。<br>
+
+                            [成果] 高校3年: 挫折からの再起 失敗の反省を活かし、7ヶ月の制作期間を設けてゲームを開発。「ゲームクリエイター甲子園 U18」にて、セミファイナルに進出することができた。
+                        </p>
+                    </div>
+                </div>
+                <!-- 経験 2 (アコーディオン) -->
+                <div class="accordion">
+                    <div class="accordion-toggle">
+                        <h3>株式会社ライフイズテック/ Unityメンター （インターン）(2025年7月〜)</h3>
+                        <span class="icon-arrow"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>中高生にUnityの指導、エラー対応、環境構築など「作りたいゲーム」を実現するための技術サポートを担当した。<br>この経験を通じ、Unityのバージョン差や未知のエラーにも即時対応する「柔軟な問題解決能力」と、技術を分かりやすく伝える「指導力」が身についた。
+                        </p>
+                    </div>
+                </div>
+                <!-- 経験 3 (アコーディオン) -->
+                <div class="accordion">
+                    <div class="accordion-toggle">
+                        <h3>株式会社シフト / プログラマー (アルバイト) (2025年10月〜)</h3>
+                        <span class="icon-arrow"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>プログラマーとして、UnityおよびJavaを用いたゲーム開発業務に携わっている。開発においては、未知の仕様や機能の実装に直面することも多々あるが、インターネットでのリサーチと迅速なトライアンドエラーを繰り返すことで、自己解決する能力を養っている。
+                        </p>
+                    </div>
+                </div>
+                <!-- 経験 4 (アコーディオン) -->
+                <div class="accordion">
+                    <div class="accordion-toggle">
+                        <h3>10人でのUnityチーム開発のリーダーを担当 (2025年11月〜)</h3>
+                        <span class="icon-arrow"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>17期Unityコースに声をかけ、集まった10人とゲーム開発を開始した。リーダーとして主に、コーディングタスク割り振り、デザインタスク割り振り、UIデザインを担当している。
+                            「神ゲー創造主エボリューション2026」& Apple Store・Google Playリリースに向けて開発中。
+                            <br>
+                            <strong>GitHub:</strong> <a href="https://github.com/Youkin06/17thGame"
+                                target="_blank">https://github.com/Youkin06/17thGame</a>
+                        </p>
+                    </div>
+                </div>
+                <!-- 経験 5 (アコーディオン) -->
+                <div class="accordion">
+                    <div class="accordion-toggle">
+                        <h3>Bit Summit Game Jam 2026に参加 (2026年2月〜)</h3>
+                        <span class="icon-arrow"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>2026年2月14日から、日本最大級のゲームカンファレンス「BitSummit」のゲームジャムにUnityエンジニアとして参戦。
+                            <br>
+                            BitSummitは、国内外のインディーゲーム開発者が集まる国際的なゲームイベントである。このゲームジャムでは、短期間で完成度の高いゲームを制作し、プロの開発者や来場者に向けて作品を発表する。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== 6. スキル ===== -->
+        <section id="skills" class="section-container">
+            <div id="skills-background" class="section-background-canvas"></div>
+            <h2 class="scroll-animate from-down">SKILLS</h2>
+            <div class="skills-grid scroll-animate from-down">
+                <!-- カテゴリ 1: Languages -->
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul>
+                        <li>
+                            <span class="skill-name">C# (Unity)</span>
+                            <div class="stars" data-rating="5"></div>
+                        </li>
+                        <li>
+                            <span class="skill-name">JavaScript</span>
+                            <div class="stars" data-rating="3"></div>
+                        </li>
+                        <li>
+                            <span class="skill-name">HTML/CSS</span>
+                            <div class="stars" data-rating="3"></div>
+                        </li>
+                        <li>
+                            <span class="skill-name">Python</span>
+                            <div class="stars" data-rating="2"></div>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- カテゴリ 2: Tools & Engines -->
+                <div class="skill-category">
+                    <h3>Tools</h3>
+                    <ul>
+                        <li>
+                            <span class="skill-name">Unity</span>
+                            <div class="stars" data-rating="5"></div>
+                        </li>
+                        <li>
+                            <span class="skill-name">Git/Github</span>
+                            <div class="stars" data-rating="4"></div>
+                        </li>
+                        <li>
+                            <span class="skill-name">Blender</span>
+                            <div class="stars" data-rating="3"></div>
+                        </li>
+                        <li>
+                            <span class="skill-name">Figma</span>
+                            <div class="stars" data-rating="4"></div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- カテゴリ 4: Others -->
+                <div class="skill-category">
+                    <h3>Others</h3>
+                    <ul>
+                        <li>
+                            <span class="skill-name">ゲームアイデア</span>
+                            <div class="stars" data-rating="3"></div>
+                        </li>
+                        <li>
+                            <span class="skill-name">企画書作成</span>
+                            <div class="stars" data-rating="3"></div>
+                        </li>
+                        <li>
+                            <span class="skill-name">書道</span>
+                            <div class="stars" data-rating="5"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== 7. フッター ===== -->
+    <footer class="footer">
+        <p>&copy; 2025 矢追陽平（ようきん）. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ===== 作品詳細モーダル (ポップアップ) ===== -->
+    <!-- (初期状態では非表示) -->
+    <div id="modal-project-1" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>ぼくのにっき</h2>
+            <p><strong>ジャンル:</strong> 2Dアクションホラー</p>
+            <p><strong>開発期間:</strong>2025年6月(1カ月間)</p>
+            <p><strong>操作説明:</strong> AD（or左右）キーで移動、SPACE(or上方向キー)でジャンプ、マウスで書き込み</p>
+            <p><strong>詳しい説明:</strong><br>
+                子供の日記の世界を探検するホラーゲームである。日記に直接線を書き込んでプレイヤーをゴールへ導くという、描画によるユニークな操作が特徴である。
+                イラストは全て自作で、手書き風の見た目にこだわった。
+                Youtubeでホラーゲームの実況動画は見るが、実際にゲームはプレイしない層をターゲットに、彼らの初めてのホラーゲームとして提供したいと考えている。
+            </p>
+            <p><strong>技術説明:</strong><br>
+                コルーチンを使用してストーリー性のあるゲーム開発に挑戦した。
+                画面のフェードインやフェードアウトといったプログラム処理もコルーチンを用いて実装した。
+                プレイヤーが線を描く操作にはLineRendererを使い、表現にこだわった。
+                また、Font Asset Creatorを利用し、TextMeshProで子供が書いたような手書き風のフォント表示を実現した。
+                開発を通じてUnitaskという便利な非同期処理ツールを知ることができ、次回のストーリーゲーム制作ではぜひ活用したいと考えている。
+            </p>
+            <p><strong>リンク:</strong></p>
+            <ul>
+                <li><a href="https://github.com/LeadersUnity/ld17-original-youkin" target="_blank">GitHubリポジトリ</a></li>
+                <li><a href="https://unityroom.com/games/bokunonikki" target="_blank">ゲームをプレイ</a></li>
+            </ul>
+            <p><strong>出展:</strong></p>
+            <p>「神ゲー創造主エボリューション&ゲームクリエイター甲子園合同発表展示会」に出展。</p>
+            <img src="Images/Syutten2.JPG" alt="神ゲー創造主エボリューション&ゲームクリエイター甲子園合同発表展示会"
+                style="width: 100%; max-width: 400px; border-radius: 8px; margin-top: 10px;">
+        </div>
+    </div>
+
+    <div id="modal-project-2" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>DEPTH DIARY</h2>
+            <p><strong>ジャンル:</strong> 2Dアドベンチャー</p>
+            <p><strong>開発期間:</strong> 2024年3月~10月(7カ月間)</p>
+            <p><strong>操作説明:</strong> ジョイスティックで移動、BURSTボタンでバースト（敵を倒せる、壁を壊せる）</p>
+            <p><strong>詳しい説明:</strong><br>
+                紫色をベースカラーとしたアドベンチャーゲームである。
+                プレイヤーを飽きさせないように、死亡してもタップ一つですぐにリトライできるシステムにこだわった。
+                ステージ構成は、横スクロールステージや敵に追いかけられるステージ、ボス戦など変化に富んだ内容で、敵の種類も多く設定することでプレイヤーを飽きさせない工夫をしている。
+                ドット絵はすべて手書きで作成し、敵の見た目から攻撃パターンを予測できるように設計した。
+                また、あえて多くの色を使わず紫色ベースに統一することで、ビジュアルに一貫性を持たせている。
+            </p>
+            <p><strong>技術説明:</strong><br>
+                タイルマップ機能を使ってドット絵ゲームを制作した。
+                特にジョイスティック操作の実装や、画面上のゲージを正確に制御するプログラムの作成に注力した。
+                スマートフォン向けゲームのため、タップ感知や複数の指が同時に押されている場合の処理など、スマホ特有の操作プログラムも工夫した。
+                開発を通してルールタイルという便利な機能を知ることができ、次回のドット絵ゲーム制作で活用したいと考えている。
+            </p>
+            <p><strong>リンク:</strong></p>
+            <ul>
+                <li><a href="https://play.unity.com/ja/games/962dd261-d374-4db9-83cf-7050148df431/depth-diary"
+                        target="_blank">ゲームをプレイ（スマホでのプレイのみです）</a></li>
+            </ul>
+            <p><strong>出展:</strong></p>
+            <p>ゲームクリエイター甲子園授与式に出展。</p>
+            <img src="Images/Syutten1.JPG" alt="ゲームクリエイター甲子園授与式"
+                style="width: 100%; max-width: 600px; border-radius: 8px; margin-top: 10px;">
+        </div>
+    </div>
+
+    <div id="modal-project-3" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>スライムスライス</h2>
+            <p><strong>ジャンル:</strong>3Dカジュアル</p>
+            <p><strong>開発期間:</strong>2025年7月(2週間)</p>
+            <p><strong>操作説明:</strong> 指のスワイプで敵を斬る</p>
+            <p><strong>詳しい説明:</strong><br>
+                スマートフォンでユーザーがいかに簡単に爽快感を得られるかを追求してこのゲームを制作しました。
+                スライムを切断した際の効果音やエフェクトには特にこだわり、心地よさを高めています。
+                ユーザーインターフェースは分かりやすさと統一感を持たせることに注力しました。
+                また、ただスライムを斬り続ける単純作業にならないよう、攻撃力アップや一撃必殺などの戦略的な要素となるボタンを追加し、ゲームプレイに変化をつけています。
+            </p>
+            <p><strong>技術説明:</strong><br>
+                スマートフォンのスワイプ操作で敵を切るアクションの実装に注力しました。
+                敵を斬るエフェクトはLineRendererを用いて視覚的な表現にこだわっています。
+                敵はウェーブ式で出現し、ウェーブが進むごとに敵の量やHPが増加するように設定しました。
+                キャラクターモデルとしてBlenderでスライムやボススライム、雲を作成し、Unityに取り込んで使用しています。
+                現状はウェーブごとの敵の強化に対してプレイヤーの攻撃力の伸びが追いつかず、最大ウェーブが22程度で止まってしまうため、今後はレベルデザインをより精密に調整してゲームが無限に続くように改善したいと考えています。
+                また、敵を切断した際のエフェクトをParticle SystemやShaderを活用してさらに高品質にしたいと考えています。
+            </p>
+            <p><strong>リンク:</strong></p>
+            <ul>
+                <li><a href="https://unityroom.com/games/slimeslice" target="_blank">ゲームをプレイ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-project-4" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>CIRCUSAL</h2>
+            <p><strong>ジャンル:</strong>2Dカジュアル</p>
+            <p><strong>開発期間:</strong>2023年1月~3月(2カ月間)</p>
+            <p><strong>操作説明:</strong> タップで方向転換</p>
+            <p><strong>詳しい説明:</strong><br>
+                スマートフォンでリリースしたいという目標から、スコアアタック形式の二次元カジュアルゲームを制作しました。
+                このゲームはバスケットボールのドリブルから着想を得ており、プレイヤーは黄色の板に着地した瞬間にタップすることで跳ね上がり、速度が加速する設計にしています。
+                ユーザーに爽快感を与えるため、エフェクトやビジュアルにこだわりました。
+                ゲーム内で獲得できるコインを集めることで、新しいスキンを入手できる要素も搭載しています。
+                ステージは上下左右に広がる無限ステージを採用しています。
+            </p>
+            <p><strong>技術説明:</strong><br>
+                UnityAdsを導入して広告機能を実装しました。
+                データ記憶と管理にはPlayerPrefsとScriptableObjectを使用しました。
+                Particle Systemを使って黄色の板が割れるエフェクトや、コインで手に入るスキンを魅力的に見せる工夫をしました。
+                Shader Graphを用いて速度が上昇する板に動きを加えています。
+                このゲームはGoogle Playにリリースしましたが、現在はストアでは公開していません。
+            <p><strong>リンク:</strong></p>
+            <ul>
+                <li><a href="https://applion.jp/CIRCUSAL/android-com.YOUKINCOMPANY.CIRCUSAL/" target="_blank">Google
+                        Playに載せ、APPLIONに掲載された</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 目次表示切り替えボタン -->
+    <div id="navbar-toggle-button">
+        <img src="Images/Controller_smh.png" alt="目次表示切替">
+        <span>目次</span>
+    </div>
+
+    <!-- 外部JavaScriptファイルの読み込み (必ず </body> の直前に) -->
+    <!-- p5.jsライブラリ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="sketch.js"></script>
+    <script src="section-sketch.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
